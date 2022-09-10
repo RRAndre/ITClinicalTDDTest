@@ -35,5 +35,24 @@ class NthParameterTests {
                 });
     }
 
+    @Test
+    void argumentNIsBiggerThanTextLengthTest(){
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    filter.filterUppercase(9, "ITCLiNicAl");
+                    filter.filterUppercase(100, "ITCLiNicAl");
+                    filter.filterUppercase(15, "ITCLiNicAl");
+                    filter.filterUppercase(20, "ITCLiNicAl");
+                    filter.filterUppercase(30, "ITCLiNicAl");
+                    filter.filterUppercase(1000, "ITCLiNicAl");
+                });
+    }
 
+    @Test
+    void argumentNIsSmallerThanTextLengthTest(){
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    filter.filterUppercase(9, "ITCLiNicAl");
+                });
+    }
 }
