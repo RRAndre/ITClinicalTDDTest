@@ -8,5 +8,6 @@ public class Main {
         uppercaseLettersFilter.filterUppercase(3, "ITCLiNicAl");
         uppercaseLettersFilter.filterUppercase(100, "ITCLiNicAl");
         uppercaseLettersFilter.filterUppercase(10, "ITCLiNicAl");
+        uppercaseLettersFilter.filterUppercase(0, "ITCLiNicAl");
     }
 }
