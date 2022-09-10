@@ -39,7 +39,7 @@ class NthParameterTests {
     void argumentNIsBiggerThanTextLengthTest(){
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    filter.filterUppercase(9, "ITCLiNicAl");
+                    filter.filterUppercase(11, "ITCLiNicAl");
                     filter.filterUppercase(100, "ITCLiNicAl");
                     filter.filterUppercase(15, "ITCLiNicAl");
                     filter.filterUppercase(20, "ITCLiNicAl");
@@ -48,11 +48,4 @@ class NthParameterTests {
                 });
     }
 
-    @Test
-    void argumentNIsSmallerThanTextLengthTest(){
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    filter.filterUppercase(9, "ITCLiNicAl");
-                });
-    }
 }
