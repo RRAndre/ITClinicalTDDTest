@@ -10,20 +10,13 @@ class NthParameterTests {
     void setup() {
         filter = new UppercaseLettersFilter();
     }
-
     @Test
     void noStringIsProvidedTest() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    filter.filterUppercase(0, "");
                     filter.filterUppercase(1, "");
-                    filter.filterUppercase(2, "");
-                    filter.filterUppercase(3, "");
-                    filter.filterUppercase(4, "");
-                    filter.filterUppercase(5, "");
                 });
     }
-
     @Test
     void argumentNIsNegativeTest() {
         assertThrows(IllegalArgumentException.class,
@@ -31,26 +24,26 @@ class NthParameterTests {
                     filter.filterUppercase(-1, "ITCLiNicAl");
                 });
     }
-
     @Test
-    void argumentNIsBiggerThanTextLengthTest() {
+    void argumentNIsZeroTest() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    filter.filterUppercase(11, "ITCLiNicAl");
-                    filter.filterUppercase(100, "ITCLiNicAl");
-                    filter.filterUppercase(15, "ITCLiNicAl");
-                    filter.filterUppercase(20, "ITCLiNicAl");
-                    filter.filterUppercase(30, "ITCLiNicAl");
-                    filter.filterUppercase(1000, "ITCLiNicAl");
+                    filter.filterUppercase(0, "ITCLiNicAl");
                 });
     }
-
     @Test
-    void argumentNIsSameAsTextLengthTest() {
+    void argumentNIsSameAsTextLengthTest() { //My thought on this one is that the iterator will never find a letter at the index
+        //equal to the text length
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     filter.filterUppercase(10, "ITCLiNicAl");
                 });
     }
-
+    @Test
+    void argumentNIsBiggerThanTextLengthTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    filter.filterUppercase(100, "ITCLiNicAl");
+                });
+    }
 }
