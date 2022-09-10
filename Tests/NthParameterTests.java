@@ -10,6 +10,7 @@ class NthParameterTests {
     void setup() {
         filter = new UppercaseLettersFilter();
     }
+
     @Test
     void noStringIsProvidedTest() {
         assertThrows(IllegalArgumentException.class,
@@ -22,21 +23,17 @@ class NthParameterTests {
                     filter.filterUppercase(5, "");
                 });
     }
+
     @Test
-    void argumentNIsNegativeOrZeroTest() {
+    void argumentNIsNegativeTest() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     filter.filterUppercase(-1, "ITCLiNicAl");
-                    filter.filterUppercase(-100, "ITCLiNicAl");
-                    filter.filterUppercase(-2, "ITCLiNicAl");
-                    filter.filterUppercase(0, "ITCLiNicAl");
-                    filter.filterUppercase(-10, "ITCLiNicAl");
-                    filter.filterUppercase(-0, "ITCLiNicAl");
                 });
     }
 
     @Test
-    void argumentNIsBiggerThanTextLengthTest(){
+    void argumentNIsBiggerThanTextLengthTest() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     filter.filterUppercase(11, "ITCLiNicAl");
@@ -45,6 +42,14 @@ class NthParameterTests {
                     filter.filterUppercase(20, "ITCLiNicAl");
                     filter.filterUppercase(30, "ITCLiNicAl");
                     filter.filterUppercase(1000, "ITCLiNicAl");
+                });
+    }
+
+    @Test
+    void argumentNIsSameAsTextLengthTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    filter.filterUppercase(10, "ITCLiNicAl");
                 });
     }
 
