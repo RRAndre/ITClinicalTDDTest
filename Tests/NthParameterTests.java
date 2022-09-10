@@ -13,6 +13,7 @@ class NthParameterTests {
     void setup() {
         filter = new UppercaseLettersFilter();
     }
+
     @Test
     void noStringIsProvidedTest() {
         assertThrows(IllegalArgumentException.class,
@@ -20,6 +21,8 @@ class NthParameterTests {
                     filter.filterUppercase(1, "");
                 });
     }
+
+    //Testing the argument N
     @Test
     void argumentNIsNegativeTest() {
         assertThrows(IllegalArgumentException.class,
@@ -27,6 +30,7 @@ class NthParameterTests {
                     filter.filterUppercase(-1, sampleText);
                 });
     }
+
     @Test
     void argumentNIsZeroTest() {
         assertThrows(IllegalArgumentException.class,
@@ -34,6 +38,7 @@ class NthParameterTests {
                     filter.filterUppercase(0, sampleText);
                 });
     }
+
     @Test
     void argumentNIsSameAsTextLengthTest() { //My thought on this one is that the iterator will never find a letter at the index
         //equal to the text length
@@ -42,6 +47,7 @@ class NthParameterTests {
                     filter.filterUppercase(10, sampleText);
                 });
     }
+
     @Test
     void argumentNIsBiggerThanTextLengthTest() {
         assertThrows(IllegalArgumentException.class,
@@ -49,30 +55,49 @@ class NthParameterTests {
                     filter.filterUppercase(100, sampleText);
                 });
     }
+
+    // Testing the text
     @Test
-    void sampleTextWithNEquals1Test(){
-        assertEquals("ITCLNA",filter.filterUppercase(1, sampleText));
+    void sampleTextWithNEquals1Test() {
+        assertEquals("ITCLNA", filter.filterUppercase(1, sampleText));
     }
 
     @Test
-    void sampleTextWithNEquals2Test(){
-        assertEquals("TLN",filter.filterUppercase(2, sampleText));
-    }
-    @Test
-    void sampleTextWithNEquals3Test(){
-        assertEquals("CNA",filter.filterUppercase(3, sampleText));
-    }
-    @Test
-    void sampleTextWithNEquals4Test(){
-        assertEquals("L",filter.filterUppercase(4, sampleText));
-    }
-    @Test
-    void newTextWithNEquals1Test(){
-        assertEquals("ITCLNANEWTEXT",filter.filterUppercase(1, sampleWithSpaces));
-    }
-    @Test
-    void allLowerCaseReturnsEmptyStringTest(){
-        assertEquals("",filter.filterUppercase(1, allLowerCase));
+    void sampleTextWithNEquals2Test() {
+        assertEquals("TLN", filter.filterUppercase(2, sampleText));
     }
 
+    @Test
+    void sampleTextWithNEquals3Test() {
+        assertEquals("CNA", filter.filterUppercase(3, sampleText));
+    }
+
+    @Test
+    void sampleTextWithNEquals4Test() {
+        assertEquals("L", filter.filterUppercase(4, sampleText));
+    }
+
+    @Test
+    void newTextWithNEquals1Test() {
+        assertEquals("ITCLNANEWTEXT", filter.filterUppercase(1, sampleWithSpaces));
+    }
+
+    @Test
+    void allLowerCaseReturnsEmptyStringTest() {
+        assertEquals("", filter.filterUppercase(1, allLowerCase));
+    }
+
+    //Testing numbers and special characters
+    @Test
+    void numbersAreReturnedTest(){
+        assertEquals("ICL1N", filter.filterUppercase(1, "ItCL1Nical"));
+    }
+    @Test
+    void specialCharactersAreReturnedTest(){
+        assertEquals("!CL1N", filter.filterUppercase(1, "!tCL1Nical"));
+    }
+    @Test
+    void whiteSpacesAreNotReturnedTest(){
+        assertEquals("!CL1N", filter.filterUppercase(1, "!tCL1 Nical"));
+    }
 }

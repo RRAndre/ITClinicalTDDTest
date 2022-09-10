@@ -13,7 +13,7 @@ public class UppercaseLettersFilter {
             char[] chars = text.toCharArray();
             for (int i = N - 1; i < chars.length; i += N) {
                 char ch = chars[i];
-                if (Character.isUpperCase(ch)) {
+                if (!Character.isLowerCase(ch) && !Character.isWhitespace(ch)) {
                     builder.append(ch);
                 }
             }
