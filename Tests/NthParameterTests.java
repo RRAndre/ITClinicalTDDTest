@@ -89,15 +89,17 @@ class NthParameterTests {
 
     //Testing numbers and special characters
     @Test
-    void numbersAreReturnedTest(){
+    void numbersAreReturnedTest() {
         assertEquals("ICL1N", filter.filterUppercase(1, "ItCL1Nical"));
     }
+
     @Test
-    void specialCharactersAreReturnedTest(){
+    void specialCharactersAreReturnedTest() {
         assertEquals("!CL1N", filter.filterUppercase(1, "!tCL1Nical"));
     }
+
     @Test
-    void whiteSpacesAreNotReturnedTest(){
+    void whiteSpacesAreNotReturnedTest() {
         assertEquals("!CL1N", filter.filterUppercase(1, "!tCL1 Nical"));
     }
 }
