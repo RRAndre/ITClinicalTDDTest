@@ -2,11 +2,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UppercaseLettersFilter {
-
+        private int N = 1;
+        private String text = null;
     public String filterUppercase(int N, String text) {
+        this.N = N;
+        this.text = text;
 
         StringBuilder builder = new StringBuilder();
         Map<Character, Integer> charCounterMap = new HashMap<>();
+
         if (text.length() == 0) {
             throw new IllegalArgumentException("Please provide a text to be filtered.");
         }
@@ -33,6 +37,14 @@ public class UppercaseLettersFilter {
                 System.out.println(entry.getKey() + " = " + entry.getValue());
             }
             return resultString;
+        }
+    }
+    public void checkInvalidCondition(){
+        if (text.length() == 0) {
+            throw new IllegalArgumentException("Please provide a text to be filtered.");
+        }
+        if (N <= 0 || N >= text.length()) {
+            throw new IllegalArgumentException("N needs to be a positive integer, and smaller than " + text.length());
         }
     }
 }
