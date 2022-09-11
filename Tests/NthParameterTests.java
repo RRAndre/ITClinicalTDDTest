@@ -102,4 +102,8 @@ class NthParameterTests {
     void whiteSpacesAreNotReturnedTest() {
         assertEquals("!CL1N", filter.filterUppercase(1, "!tCL1 Nical"));
     }
+    /*@Test  ver como faço um teste para ver os números do hashmap
+    void counterReturnsCorrectNumberOfCharsTest(){
+        assertEqu
+    }*/
 }

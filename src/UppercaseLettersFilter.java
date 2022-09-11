@@ -29,7 +29,9 @@ public class UppercaseLettersFilter {
             }
             String resultString = builder.toString();
             System.out.println(resultString);
-            
+            for (Map.Entry entry : charCounterMap.entrySet()) {
+                System.out.println(entry.getKey() + " = " + entry.getValue());
+            }
             return resultString;
         }
     }
